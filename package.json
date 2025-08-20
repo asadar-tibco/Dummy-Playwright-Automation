@@ -1,0 +1,21 @@
+{
+  "name": "dummy-playwright-automation",
+  "version": "1.0.0",
+  "description": "Playwright automation test suite for TeamCity integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:smoke": "npx playwright test tests/smoke",
+    "test:bat": "npx playwright test tests/bat",
+    "test:uat": "npx playwright test tests/uat",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "install:browsers": "npx playwright install"
+  },
+  "keywords": ["playwright", "automation", "testing", "teamcity"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
