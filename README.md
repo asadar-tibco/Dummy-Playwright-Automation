@@ -82,6 +82,33 @@ npm run test:debug
 npx playwright test --debug
 ```
 
+### Run tests for TeamCity (no browser opening):
+```bash
+npm run test:teamcity
+```
+
+### Generate and view Allure reports:
+
+**Run tests and generate Allure report:**
+```bash
+npm run test:allure
+```
+
+**Generate Allure report only:**
+```bash
+npm run allure:generate
+```
+
+**Open existing Allure report:**
+```bash
+npm run allure:open
+```
+
+**Serve Allure report (generate and open in one command):**
+```bash
+npm run allure:serve
+```
+
 ## Test Details
 
 All test cases are designed for **dummy purposes only** and contain only console log messages. They are specifically created for:
@@ -97,22 +124,65 @@ All test cases are designed for **dummy purposes only** and contain only console
 2. **BAT Tests (5 cases)** - Build acceptance and critical path testing
 3. **UAT Tests (5 cases)** - User acceptance and end-to-end scenarios
 
-## TeamCity Integration
+## TeamCity Integration (Artifact-Based)
 
-The project is configured with:
-- JUnit XML reporter for TeamCity integration
-- HTML reports for detailed test results
-- Proper exit codes for CI/CD pipeline integration
-- Parallel test execution support
+### **✅ Simple Setup - No Plugins Required:**
+
+**TeamCity Build Command:**
+```bash
+npm run test:ci
+```
+
+**TeamCity Artifact Paths:**
+```
+allure-report/** => allure-report.zip
+test-results/** => test-results.zip
+```
+
+### **📊 What You Get:**
+- **Immediate Results**: JUnit test results in TeamCity Tests tab
+- **Rich Reports**: Download allure-report.zip and open index.html
+- **Console Logs**: All test execution visible in build output
+- **Screenshots/Videos**: Automatically included for failed tests
+
+### **📖 Detailed Setup Guide:**
+- See `TEAMCITY_QUICK_SETUP.md` for 3-step setup
+- See `TEAMCITY_INTEGRATION.md` for complete configuration guide
+
+### **🎯 Benefits:**
+- ✅ No TeamCity plugins required
+- ✅ Works with any TeamCity version  
+- ✅ Easy report sharing via artifact download
+- ✅ Historical reports preserved automatically
+
+## Reporting
+
+The project includes multiple reporting options:
+
+### **Allure Reports** (Recommended)
+- Rich, interactive test reports with detailed insights
+- Screenshots and videos for failed tests
+- Step-by-step test execution details
+- Trend analysis and historical data
+- Perfect for TeamCity integration
+
+### **JUnit XML Reports**
+- Basic XML format for CI/CD integration
+- Compatible with most CI/CD tools including TeamCity
+
+### **Console Output**
+- Real-time test execution logs
+- Color-coded test results
 
 ## Configuration
 
 The `playwright.config.js` includes:
 - Chrome browser support only (Chromium engine)
+- Allure reporter for rich test reporting
+- JUnit XML reporter for CI/CD integration
 - Screenshot on failure
 - Video recording on failure
 - Trace collection for debugging
-- JUnit XML output for CI integration
 
 ## Notes
 
